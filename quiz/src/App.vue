@@ -1,7 +1,14 @@
 <template>
   <div id="app">
     <Header />
-    <QuestionBox />
+
+    <b-container class="by-example-row">
+      <b-row>
+        <b-col sm="6" offset="3">
+          <QuestionBox />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 

@@ -12,6 +12,7 @@
                     v-for="(answer, index) in answers" 
                     :key="index" 
                     @click="selectAnswer(index)"
+                    :class="[selectIndex === index ? 'selected' : '']"
                 >
                     {{ answer }}
                 </b-list-group-item>
@@ -29,6 +30,11 @@ export default {
         currentQuestion: Object,
         next: Function
     },
+    data() {
+        return {
+            selectIndex: null
+        }
+    },
     computed: {
         answers() {
             let answers = [...this.currentQuestion.incorrect_answers]
@@ -38,7 +44,7 @@ export default {
     },
     methods: {
         selectAnswer(index) {
-            console.log(index)
+            this.selectIndex = index
         }
     },
     mounted() {
@@ -52,7 +58,24 @@ export default {
         margin-bottom: 15px;
     }
 
+    .list-group-item:hover {
+        background: #EEE;
+        cursor: pointer;
+    }
+
     .btn {
         margin: 0 5px;
+    }
+
+    .selected {
+        background-color: lightblue;
+    }
+
+    .correct {
+        background-color: lightgreen;
+    }
+
+    .incorrect {
+        background-color: red;
     }
 </style>
